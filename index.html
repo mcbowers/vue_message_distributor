@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid" id="dateVue">
+        <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> Vue UI with Topic Based Multiplexer</a>
+        {{time}}
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div id="randomFloat" class="col-sm-5 well">
+            <div class="panel-heading">
+                <h5>Random Float: {{randomNumber}}</h5>
+            </div>
+        </div>
+        <div id="randomInteger" class="col-sm-5 col-sm-offset-1 well">
+            <div class="panel-heading">
+                <h5>Random Integer: {{randomNumber}}</h5>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="randomNumber" class="col-sm-11 well">
+            <div class="panel-heading">
+                <h5>Random Integer: {{randomInteger}}</h5>
+                <h5>Random Float: {{randomFloat}}</h5>
+                <hr/>
+                <h5>Count Up: {{count}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+<script src="js/pubsub.js"></script>
+<script src="js/randomFloatVue.js"></script>
+<script src="js/randomIntegerVue.js"></script>
+<script src="js/randomNumberVue.js"></script>
+<script src="js/dateVue.js"></script>
+<script>
+    setInterval( function() {
+        events.publish( 'randomFloat', { number: Math.random() } );
+        events.publish( 'randomInteger', { number: Math.round( Math.random() * (100 - 1) + 1 ) } );
+        events.publish( 'time', { time: new Date() })
+    }, 1000 );
+
+    var count = 0;
+    setInterval( function() {
+        events.publish( 'countup', { number:count } );
+        count++;
+    }, 100 );
+</script>
+
+</body>
+</html>
