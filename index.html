@@ -2,40 +2,43 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Vue</title>
+    <title>Vue UI with PubSub Routing</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="application.css">
+
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid" id="dateVue">
-        <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> Vue UI with Topic Based Multiplexer</a>
-        {{time}}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> Vue UI with Topic Based Message Multiplexer</a>
     </div>
 </nav>
 
 <div class="container">
-    <div class="row">
-        <div id="randomFloat" class="col-sm-5 well">
-            <div class="panel-heading">
-                <h5>Random Float: {{randomNumber}}</h5>
-            </div>
-        </div>
-        <div id="randomInteger" class="col-sm-5 col-sm-offset-1 well">
-            <div class="panel-heading">
-                <h5>Random Integer: {{randomNumber}}</h5>
-            </div>
+    <div id="row">
+        <div id="randomInteger" class="well">
+            <p><b>Random Integer:</b> {{randomNumber}}</p>
         </div>
     </div>
-    <div class="row">
-        <div id="randomNumber" class="col-sm-11 well">
-            <div class="panel-heading">
-                <h5>Random Integer: {{randomInteger}}</h5>
-                <h5>Random Float: {{randomFloat}}</h5>
-                <hr/>
-                <h5>Count Up: {{count}}</h5>
-            </div>
+    <div id="row">
+        <div id="randomFloat" class="well">
+            <p><b>Random Float:</b> {{randomNumber}}</p>
         </div>
+    </div>
+    <div id="row">
+        <div id="randomNumber" class="well">
+            <p><b>Random Integer:</b> {{randomInteger}}</p>
+            <p><b>Random Float:</b> {{randomFloat}}</p>
+            <hr/>
+            <p><b>Count Up:</b> {{count}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-bottom footer">
+    <div class="container pull-left" id="dateVue">
+        <i>{{time}}</i>
     </div>
 </div>
 
@@ -49,7 +52,13 @@
 <script>
     setInterval( function() {
         events.publish( 'randomFloat', { number: Math.random() } );
+    }, 2250 );
+
+    setInterval( function() {
         events.publish( 'randomInteger', { number: Math.round( Math.random() * (100 - 1) + 1 ) } );
+    }, 500 );
+
+    setInterval( function() {
         events.publish( 'time', { time: new Date() })
     }, 1000 );
 
@@ -57,7 +66,7 @@
     setInterval( function() {
         events.publish( 'countup', { number:count } );
         count++;
-    }, 100 );
+    }, 50 );
 </script>
 
 </body>
