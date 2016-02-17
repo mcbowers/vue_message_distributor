@@ -10,9 +10,9 @@ new Vue({
 
     ready: function () {
         self = this;
-        events.subscribe( 'randomInteger', self.displayRandomInteger );
-        events.subscribe( 'randomFloat', self.displayRandomFloat );
-        events.subscribe( 'countup', self.displayCountup );
+        pubsub.subscribe( 'randomInteger', self.displayRandomInteger );
+        pubsub.subscribe( 'randomFloat', self.displayRandomFloat );
+        pubsub.subscribe( 'countup', self.displayCountup );
     },
 
     methods: {

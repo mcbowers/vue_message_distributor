@@ -8,7 +8,7 @@ new Vue({
 
     ready: function () {
         self = this;
-        events.subscribe( 'randomInteger', self.displayRandomNumber );
+        pubsub.subscribe( 'randomInteger', self.displayRandomNumber );
     },
 
     methods: {

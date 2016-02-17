@@ -8,7 +8,7 @@ new Vue({
 
     ready: function () {
         self = this;
-        events.subscribe( 'time', self.displayTime );
+        pubsub.subscribe( 'time', self.displayTime );
     },
 
     methods: {

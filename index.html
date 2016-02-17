@@ -53,20 +53,20 @@
 <script src="js/dateVue.js"></script>
 <script>
     setInterval( function() {
-        events.publish( 'randomFloat', { number: Math.random() } );
+        pubsub.publish( 'randomFloat', { number: Math.random() } );
     }, 2250 );
 
     setInterval( function() {
-        events.publish( 'randomInteger', { number: Math.round( Math.random() * (100 - 1) + 1 ) } );
+        pubsub.publish( 'randomInteger', { number: Math.round( Math.random() * (100 - 1) + 1 ) } );
     }, 500 );
 
     setInterval( function() {
-        events.publish( 'time', { time: new Date() })
+        pubsub.publish( 'time', { time: new Date() })
     }, 1000 );
 
     var count = 0;
     setInterval( function() {
-        events.publish( 'countup', { number:count } );
+        pubsub.publish( 'countup', { number:count } );
         count++;
     }, 50 );
 </script>
