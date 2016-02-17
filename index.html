@@ -4,39 +4,41 @@
     <meta charset="utf-8">
     <title>Vue UI with PubSub Routing</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="application.css">
+    <link rel="stylesheet" href="resources/application.css">
 
 </head>
-<body>
+<body class="transparent">
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse transparent">
     <div class="container-fluid">
         <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> Vue UI with Topic Based Message Multiplexer</a>
     </div>
 </nav>
 
-<div class="container">
-    <div id="row">
-        <div id="randomInteger" class="well">
-            <p><b>Random Integer:</b> {{randomNumber}}</p>
+<div class-"container transparent">
+    <div class="col-sm-6 col-sm-offset-3">
+        <div id="row">
+            <div id="randomInteger" class="well well-transparent">
+                <p><b>Random Integer:</b> {{randomNumber}}</p>
+            </div>
         </div>
-    </div>
-    <div id="row">
-        <div id="randomFloat" class="well">
-            <p><b>Random Float:</b> {{randomNumber}}</p>
+        <div id="row">
+            <div id="randomFloat" class="well well-transparent">
+                <p><b>Random Float:</b> {{randomNumber}}</p>
+            </div>
         </div>
-    </div>
-    <div id="row">
-        <div id="randomNumber" class="well">
-            <p><b>Random Integer:</b> {{randomInteger}}</p>
-            <p><b>Random Float:</b> {{randomFloat}}</p>
-            <hr/>
-            <p><b>Count Up:</b> {{count}}</p>
+        <div id="row">
+            <div id="randomNumber" class="well well-transparent">
+                <p><b>Random Integer:</b> {{randomInteger}}</p>
+                <p><b>Random Float:</b> {{randomFloat}}</p>
+                <hr/>
+                <p><b>Count Up:</b> {{count}}</p>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="navbar navbar-inverse navbar-fixed-bottom footer">
+<div class="navbar navbar-inverse navbar-fixed-bottom footer transparent">
     <div class="container pull-left" id="dateVue">
         <i>{{time}}</i>
     </div>
